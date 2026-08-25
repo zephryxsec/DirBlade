@@ -27,7 +27,7 @@ def banner():
 ╚═════╝░╚═╝╚═╝░░╚═╝╚═════╝░╚══════╝╚═╝░░╚═╝╚═════╝░╚══════╝
     """
     print(banner)
-    print_red("                                               by zephryx01")
+    print_red("                                               by zephryx")
 
 
 def request(url, timeout):

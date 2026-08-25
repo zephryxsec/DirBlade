@@ -9,6 +9,25 @@
 - **Extension Bruteforcing:** Append one or more file extensions to every wordlist entry with `-x`/`--extensions` (ex. `-x php,txt`) to also probe for files like `config.php` or `backup.txt`.
 - **Comprehensive Reporting:** Discovered paths are printed to the console and can also be saved to a file with `-o`/`--output` for later review.
 - **User-Friendly Interface:** With a simple command-line interface, DirBlade is accessible to users of all experience levels.
+
+## Screenshots
+
+### Efficient bruteforcing with real concurrency
+Requests run in parallel across the thread pool, and only genuine hits are reported.
+![Basic scan with real thread-pool concurrency](docs/screenshots/basic-scan.png)
+
+### Status code filtering
+Narrow results to just the status codes you care about, e.g. `-s 403` to hunt for forbidden paths.
+![Status code filtering example](docs/screenshots/status-codes.png)
+
+### Extension bruteforcing
+`-x php,txt` also probes every wordlist entry with each extension appended, catching files like `config.php` and `backup.txt`.
+![Extension bruteforcing example](docs/screenshots/extensions.png)
+
+### Comprehensive reporting with output files
+`-o results.txt` mirrors every discovery to a file alongside the console output.
+![Output file reporting example](docs/screenshots/output-file.png)
+
 ## Usage
 To start using DirBlade, simply provide the target URL using ```-u``` or ```--url``` along with a wordlist using ```-w``` or ```--url``` containing directory and file paths to be bruteforced.
 
