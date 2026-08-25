@@ -4,9 +4,30 @@
 ## Features
 - **Efficient Bruteforcing:** DirBlade utilizes a brute force approach to systematically scan directories and files on target web servers.
 - **Customizable Wordlists:** Users can specify their own wordlists tailored to the target application or use default wordlists included with the tool.
-- **Concurrency:** DirBlade leverages concurrency to maximize speed and efficiency during directory enumeration.
-- **Comprehensive Reporting:** DirBlade provides detailed reports of discovered directories and files, aiding in vulnerability assessment and analysis.
+- **Real Concurrency:** Requests are dispatched across a configurable thread pool (`-t`/`--threads`, default 20), with a per-request timeout (`--timeout`) so a stalled target can't stall the scan.
+- **Status Code Filtering:** Only responses matching a configurable allow-list (`-s`/`--status-codes`, default `200,204,301,302,307,401,403`) are reported as discovered, so ordinary 404s aren't flagged as hits.
+- **Extension Bruteforcing:** Append one or more file extensions to every wordlist entry with `-x`/`--extensions` (ex. `-x php,txt`) to also probe for files like `config.php` or `backup.txt`.
+- **Comprehensive Reporting:** Discovered paths are printed to the console and can also be saved to a file with `-o`/`--output` for later review.
 - **User-Friendly Interface:** With a simple command-line interface, DirBlade is accessible to users of all experience levels.
+
+## Screenshots
+
+### Efficient bruteforcing with real concurrency
+Requests run in parallel across the thread pool, and only genuine hits are reported.
+![Basic scan with real thread-pool concurrency](docs/screenshots/basic-scan.png)
+
+### Status code filtering
+Narrow results to just the status codes you care about, e.g. `-s 403` to hunt for forbidden paths.
+![Status code filtering example](docs/screenshots/status-codes.png)
+
+### Extension bruteforcing
+`-x php,txt` also probes every wordlist entry with each extension appended, catching files like `config.php` and `backup.txt`.
+![Extension bruteforcing example](docs/screenshots/extensions.png)
+
+### Comprehensive reporting with output files
+`-o results.txt` mirrors every discovery to a file alongside the console output.
+![Output file reporting example](docs/screenshots/output-file.png)
+
 ## Usage
 To start using DirBlade, simply provide the target URL using ```-u``` or ```--url``` along with a wordlist using ```-w``` or ```--url``` containing directory and file paths to be bruteforced.
 
@@ -27,6 +48,11 @@ git clone https://github.com/zephryx01/DirBlade.git
 cd DirBlade
 ```
 > Ensure you have Python 3 installed on your system.
+
+> Install the required dependencies:
+```
+pip install -r requirements.txt
+```
 
 > Run DirBlade using Python:
 ```
