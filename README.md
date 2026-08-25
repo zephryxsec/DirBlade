@@ -28,6 +28,11 @@ cd DirBlade
 ```
 > Ensure you have Python 3 installed on your system.
 
+> Install the required dependencies:
+```
+pip install -r requirements.txt
+```
+
 > Run DirBlade using Python:
 ```
 python3 dirblade.py -u http://example.com -w path/to/wordlist
